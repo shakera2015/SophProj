@@ -17,11 +17,11 @@ public class FirstTimeUser extends User {
 
     public void createUser(View view)
     {
-        int[] edittext_ids = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4};
+        int[] edit_text_ids = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4};
 
         for(int i = 0; i<4; i++)
         {
-            EditText et = (EditText) findViewById(edittext_ids[i]);
+            EditText et = (EditText) findViewById(edit_text_ids[i]);
             String a = et.getText().toString();
             if(isEmpty(a))
             {
@@ -32,6 +32,8 @@ public class FirstTimeUser extends User {
             }
 
         }
+
+
 
 
     }
