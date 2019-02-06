@@ -3,7 +3,7 @@ package com.example.csi_app;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class ForgotPassword extends AppCompatActivity {
+public class ForgotPassword extends User {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
