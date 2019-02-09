@@ -6,7 +6,11 @@ import android.view.TextureView;
 import android.view.View;
 import android.content.Intent;
 
-public class MainActivity extends  User {
+import java.util.LinkedList;
+
+public class MainActivity extends AppCompatActivity {
+
+
 
 
     @Override
@@ -39,4 +43,6 @@ public class MainActivity extends  User {
         Intent i2 = new Intent(this, FirstTimeUser.class);
         startActivity(i2);
     }
+
+
 }
