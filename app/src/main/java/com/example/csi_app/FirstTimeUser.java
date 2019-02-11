@@ -26,21 +26,26 @@ public class FirstTimeUser extends AppCompatActivity {
         setContentView(R.layout.activity_first_time_user);
     }
 
-    public void tryCreateUser(View v)
+
+
+
+        public void onSubmit(View view)
+        {
+            tryCreateUser();
+        }
+    public void tryCreateUser()
     {
-
-        final Button button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-
-            public void onClick(View view) {
+        //final int[] edit_text_ids = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4};
 
 
                 if (checkEmpty()) {
                     Context context = getApplicationContext();
                     Toast empty_field_error = Toast.makeText(context, "One or more fields are empty", Toast.LENGTH_LONG);
+                    empty_field_error.show();
                 } else if (sameUsername()) {
                     Context context = getApplicationContext();
                     Toast same_name_error = Toast.makeText(context, "Username already taken.", Toast.LENGTH_LONG);
+                    same_name_error.show();
                 } else {
                     EditText e0 = (EditText) findViewById(edit_text_ids[0]);
                     String usn = e0.getText().toString();
@@ -62,21 +67,21 @@ public class FirstTimeUser extends AppCompatActivity {
 
                 }
 
-            }
-        });
+
+
     }
 
     public boolean checkEmpty()
     {
 
         boolean track = false;
+
         for(int i = 0; i<4; i++)
         {
             EditText et = (EditText) findViewById(edit_text_ids[i]);
             String a = et.getText().toString();
             if(a.equals(""))
             {
-
                 track = true;
                 break;
             }
