@@ -9,6 +9,7 @@ import android.widget.Toast;
 import android.content.Context;
 import android.widget.Button;
 import android.view.View.*;
+import android.util.Patterns;
 
 import java.util.LinkedList;
 
@@ -35,7 +36,6 @@ public class FirstTimeUser extends AppCompatActivity {
         }
     public void tryCreateUser()
     {
-        //final int[] edit_text_ids = new int[]{R.id.editText1, R.id.editText2, R.id.editText3, R.id.editText4};
 
 
                 if (checkEmpty()) {
@@ -46,7 +46,13 @@ public class FirstTimeUser extends AppCompatActivity {
                     Context context = getApplicationContext();
                     Toast same_name_error = Toast.makeText(context, "Username already taken.", Toast.LENGTH_LONG);
                     same_name_error.show();
-                } else {
+                } else if (!isValidEmail()){
+                    Context context = getApplicationContext();
+                    Toast invalid_email_error = Toast.makeText(context, "Invalid Email.", Toast.LENGTH_LONG);
+                    invalid_email_error.show();
+                }
+
+                else {
                     EditText e0 = (EditText) findViewById(edit_text_ids[0]);
                     String usn = e0.getText().toString();
 
@@ -114,18 +120,16 @@ public class FirstTimeUser extends AppCompatActivity {
 
     }
 
-   /* public void createUser(View view)
+    public boolean isValidEmail()
     {
-        openCreateUser();
+        String em;
+        EditText t = (EditText)findViewById(edit_text_ids[3]);
+        em = t.getText().toString();
+
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(em).matches();
     }
 
-    public void openCreateUser()
-    {
-        Intent intent = new Intent(this,newUserConfirm.class);
-        startActivity(intent);
-    }
 
-*/
 
 
 
