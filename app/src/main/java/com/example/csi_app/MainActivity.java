@@ -1,11 +1,17 @@
 package com.example.csi_app;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.TextureView;
 import android.view.View;
 import android.content.Intent;
 import android.widget.Button;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 import java.util.LinkedList;
 
@@ -46,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //the code to open the camera
+
+    /*
     private Button btnCapture;
     private ImageView imgCapture;
     private static final int Image_Capture_Code = 1;
@@ -74,5 +82,5 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-
+*/
 }

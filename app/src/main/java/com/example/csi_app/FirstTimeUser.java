@@ -1,6 +1,7 @@
 package com.example.csi_app;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,6 +11,11 @@ import android.content.Context;
 import android.widget.Button;
 import android.view.View.*;
 import android.util.Patterns;
+
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.common.BitMatrix;
 
 import java.util.LinkedList;
 
@@ -65,8 +71,11 @@ public class FirstTimeUser extends AppCompatActivity {
                     EditText e3 = (EditText) findViewById(edit_text_ids[3]);
                     String emailAddress = e3.getText().toString();
 
+
+
                     User u = new User(usn, securityQuestion, securityAnswer, emailAddress);
                     User.accounts.add(u);
+                    u.generateQR();
 
                     startActivity(new Intent(FirstTimeUser.this, newUserConfirm.class));
 
