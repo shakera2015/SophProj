@@ -15,6 +15,11 @@ import com.google.zxing.common.BitMatrix;
 
 import java.util.LinkedList;
 
+import android.graphics.Bitmap;
+import android.provider.MediaStore;
+import android.widget.ImageView;
+
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -24,7 +29,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //this opens the camera button and creates intent
+        final Button camButton = findViewById(R.id.cameraButton);
+        camButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE);
+                }
+            }
+        });
     }
 
 
@@ -51,36 +65,18 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i2);
     }
 
-    //the code to open the camera
+    //following opens the Camera
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+    private ImageView mImageView;
 
-    /*
-    private Button btnCapture;
-    private ImageView imgCapture;
-    private static final int Image_Capture_Code = 1;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        btnCapture =(Button)findViewById(R.id.btnTakePicture);
-        imgCapture = (ImageView) findViewById(R.id.capturedImage);
-        btnCapture.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cInt = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cInt,Image_Capture_Code);
-            }
-        });
-    }
-    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == Image_Capture_Code) {
-            if (resultCode == RESULT_OK) {
-                Bitmap bp = (Bitmap) data.getExtras().get("data");
-                imgCapture.setImageBitmap(bp);
-            } else if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
-            }
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            mImageView = (ImageView) findViewById(R.id.myImage);
+            mImageView.setImageBitmap(imageBitmap);
         }
+
     }
-*/
+
 }
