@@ -12,7 +12,7 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.util.LinkedList;
 
 
-public class User {  //has to be abstract? if not working change to abstract
+public class User {
 
 
     static LinkedList<User> accounts = new LinkedList<User>();
@@ -107,6 +107,22 @@ public class User {  //has to be abstract? if not working change to abstract
         catch (WriterException e) {
             e.getCause();
         }
+
+
+    }
+
+    public User searchUsn(String s)
+    {
+        for(User temp: User.accounts)
+        {
+           boolean b = s.equalsIgnoreCase(temp.username);
+           if(b)
+           {
+               return temp;
+           }
+        }
+
+        return null;
 
 
     }

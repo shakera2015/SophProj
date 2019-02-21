@@ -26,7 +26,7 @@ public class newUserConfirm extends AppCompatActivity{
         qrCode.setImageBitmap(b);
 
         Context context = getApplicationContext();
-        Toast new_user_welcome = Toast.makeText(context, "Welcome" +lastUser.username, Toast.LENGTH_LONG);
+        Toast new_user_welcome = Toast.makeText(context, "Welcome " +lastUser.username, Toast.LENGTH_LONG);
         new_user_welcome.show();
 
     }
